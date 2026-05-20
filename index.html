@@ -42,7 +42,6 @@
   .anim-2 { animation: float2 5s ease-in-out infinite; }
   .anim-3 { animation: float1 6s ease-in-out infinite reverse; }
 
-  /* --- КОНТЕНТ --- */
   .content-layer {
     position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; width: 100%;
   }
@@ -51,7 +50,6 @@
     width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; padding: 60px 20px;
   }
 
-  /* --- БУКВЫ --- */
   .balloon-container { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-bottom: 50px; }
   .word { display: flex; justify-content: center; align-items: center; gap: 2px; }
   .letter {
@@ -66,7 +64,6 @@
   }
   @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-10px); } }
 
-  /* --- ТРИ ФОТКИ АРИНЫ --- */
   .photos-row { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 30px; margin-bottom: 60px; width: 100%; }
   .polaroid {
     background: #fff; padding: 15px 15px 50px 15px; border-radius: 8px;
@@ -82,7 +79,6 @@
   .pol-2 { transform: scale(1.05) translateY(-10px); z-index: 5; box-shadow: 0 20px 40px rgba(0,0,0,0.2);} .pol-2::after { content: "MY DAY"; }
   .pol-3 { transform: rotate(6deg); } .pol-3::after { content: "16 Y.O."; }
 
-  /* --- ПРАВИЛА --- */
   .rules-board {
     background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
     padding: 30px; border-radius: 25px; max-width: 700px; width: 100%;
@@ -94,10 +90,8 @@
   .rules-list li { font-size: 18px; font-weight: 800; display: flex; gap: 15px; align-items: center; line-height: 1.4; }
   .rules-list span { font-size: 28px; flex-shrink: 0; }
 
-  /* --- ЗАГОЛОВОК ВИШЛИСТА --- */
   .wishlist-title { width: 100%; max-width: 450px; margin-bottom: 50px; filter: drop-shadow(0px 10px 15px rgba(255,182,193,0.6)); animation: bounce 3s infinite alternate ease-in-out; position: relative; z-index: 20;}
 
-  /* --- СЕТКА ВИШЛИСТА --- */
   .wish-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; width: 100%; position: relative; z-index: 20; }
 
   .wish-card {
@@ -109,31 +103,30 @@
   
   .wish-card .img-wrapper { 
     width: 100%; aspect-ratio: 1; border-radius: 15px; overflow: hidden; margin-bottom: 15px; 
-    background: #ffe4e1;
+    background: #ffe4e1; display: flex; align-items: center; justify-content: center;
+  }
+  .wish-card .img-wrapper span {
+    font-family: 'Comfortaa', cursive; font-size: 32px; font-weight: 900; color: #ffb6c1;
   }
   .wish-card img, .wish-card video { width: 100%; height: 100%; object-fit: cover; }
   .wish-card h3 { font-family: 'Comfortaa', cursive; font-size: 22px; margin-bottom: 10px; color: var(--text-dark); }
   .wish-card p { font-size: 15px; font-weight: 700; color: #666; line-height: 1.5; margin-bottom: 15px; flex-grow: 1; }
   .wish-card .articles { font-family: monospace; background: var(--bg-pink); padding: 10px; border-radius: 10px; font-size: 14px; font-weight: 900; color: var(--must-color); }
   
-  /* Акцент на Альбом */
   .album-highlight { grid-column: 1 / -1; max-width: 650px; margin: 0 auto; border: 5px solid var(--must-color); box-shadow: 0 0 40px rgba(255, 77, 109, 0.4); transform: scale(1.02); }
   .badge { position: absolute; top: -15px; right: -15px; padding: 8px 18px; border-radius: 20px; font-weight: 900; font-size: 14px; box-shadow: 3px 5px 10px rgba(0,0,0,0.2); z-index: 10; }
   .badge.must { background: var(--must-color); color: white; }
   .badge.maybe { background: var(--card-yellow); color: var(--text-dark); }
   .badge.wow { background: #b088f9; color: white; }
 
-  /* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ 📱 */
   @media (max-width: 768px) {
     .sticker { opacity: 0.15 !important; transform: scale(0.7); z-index: 0;}
-    
     section { padding: 30px 15px; }
     .rules-board { padding: 20px; border-radius: 15px; margin-bottom: 40px;}
     .rules-board h3 { font-size: 22px; }
     .rules-list li { font-size: 14px; gap: 10px;}
     .rules-list span { font-size: 22px; }
     .wishlist-title { max-width: 250px; margin-bottom: 30px;}
-    
     .photos-row { gap: 15px; margin-bottom: 40px; }
     .polaroid { width: 140px; padding: 10px 10px 35px 10px; }
     .polaroid img { height: 150px; }
@@ -159,12 +152,10 @@
     <img data-name="giraffe_bday" class="sticker auto-fix anim-1" style="top:135vh; right:2%; width:130px;">
     <img data-name="pig_dots" class="sticker auto-fix anim-3" style="top:150vh; left:8%; width:140px;">
     <img data-name="image_9c76b0" class="sticker auto-fix anim-2" style="top:165vh; right:2%; width:110px;">
-    
     <img data-name="giraffe_heart" class="sticker auto-fix anim-3" style="top:200vh; right:2%; width:130px;">
     <img data-name="image_9c797d" class="sticker auto-fix anim-2" style="top:215vh; left:10%; width:120px;">
     <img data-name="giraffe_funny" class="sticker auto-fix anim-1" style="top:230vh; right:2%; width:120px;">
     <img data-name="image_9c7d99" class="sticker auto-fix anim-3" style="top:245vh; left:4%; width:150px; mix-blend-mode:multiply;">
-    
     <img data-name="hippo_love" class="sticker auto-fix anim-1" style="top:275vh; left:2%; width:120px;">
     <img data-name="pig_scarf" class="sticker auto-fix anim-3" style="top:290vh; right:5%; width:140px;">
     <img data-name="pig_happy" class="sticker auto-fix anim-1" style="top:320vh; right:2%; width:120px;">
@@ -172,9 +163,6 @@
     <img data-name="giraffe_bday" class="sticker auto-fix anim-1" style="top:365vh; left:10%; width:160px;">
     <img data-name="pig_dots" class="sticker auto-fix anim-3" style="top:380vh; right:2%; width:120px;">
     <img data-name="giraffe_heart" class="sticker auto-fix anim-1" style="top:410vh; right:10%; width:150px;">
-    
-    <img data-name="hippo_sweet" class="sticker auto-fix anim-2" style="top:440vh; left:5%; width:130px;">
-    <img data-name="pig_party" class="sticker auto-fix anim-1" style="top:470vh; right:8%; width:140px;">
   </div>
 
   <div class="content-layer">
@@ -211,12 +199,9 @@
       <img data-name="-05-05-2026" class="wishlist-title auto-fix">
       
       <div class="wish-grid">
-        
         <div class="wish-card album-highlight">
           <div class="badge must">100% НАДО</div>
-          <div class="img-wrapper">
-            <video src="video.mp4" autoplay loop muted playsinline></video>
-          </div>
+          <div class="img-wrapper"><video src="video.mp4" autoplay loop muted playsinline></video></div>
           <h3>Памятный альбом ✨</h3>
           <p>Это самый обязательный и главный подарок, который я очень жду! Каждый из вас делает памятную страничку для меня (как на видео).</p>
         </div>
@@ -237,7 +222,7 @@
 
         <div class="wish-card">
           <div class="badge maybe">СТИЛЬ</div>
-          <div class="img-wrapper"><img data-name="bag" class="auto-fix"></div>
+          <div class="img-wrapper"><span>Сумка</span></div>
           <h3>Классическая сумка 👜</h3>
           <p>Базовых цветов (черная или коричневая, светлую скорее не хочу). Главное — классика!</p>
         </div>
@@ -274,7 +259,7 @@
           <div class="badge maybe">КРАСОТА И РЕЛАКС</div>
           <div class="img-wrapper"><img data-name="сертификат" class="auto-fix"></div>
           <h3>Сертификаты 🎟️</h3>
-          <p>С удовольствием схожу на массаж, в магазин нижнего белья, в Золотое Яблоко 🍏 или на йогу с песиками 🐶 (говорят, у нас такое точно есть!).</p>
+          <p>С удовольствием схожу на массаж, в магазин нижнего белья, в Золотое Яблоко 🍏 или на йогу с песиками 🐶.</p>
         </div>
 
         <div class="wish-card">
@@ -286,7 +271,7 @@
 
         <div class="wish-card">
           <div class="badge must">ОТ ДУШИ</div>
-          <div class="img-wrapper"></div>
+          <div class="img-wrapper" style="background-color: #ffe4e1;"></div>
           <h3>Подарки своими руками 🎨</h3>
           <p>Подарки ручной работы и любые сюрпризы «от себя» очень приветствуются! Буду рада вашему творчеству.</p>
         </div>
@@ -302,39 +287,33 @@
           <div class="badge must">ХРЮ!</div>
           <div class="img-wrapper"><img data-name="plush" class="auto-fix"></div>
           <h3>Плюшевая свинка 🐽</h3>
-          <p>Она идеальная! Артикул для заказа:</p>
-          <div class="articles">634174058</div>
+          <p>Она идеальная! Артикул для заказа: 634174058</p>
         </div>
 
         <div class="wish-card">
           <div class="badge maybe">ПО ЖЕЛАНИЮ</div>
           <div class="img-wrapper"><img data-name="sokolov" class="auto-fix"></div>
           <h3>Серебро SOKOLOV 💎</h3>
-          <p>По желанию, кто что захочет. Если прям совсем не знаете, что выбрать, то вот примеры артикулов:</p>
+          <p>Если прям совсем не знаете, что выбрать, вот примеры артикулов:</p>
           <div class="articles">112056432, 190006037, 2077617, 2077683</div>
         </div>
-
       </div>
     </section>
   </div>
 
   <script>
-    // СКРИПТ АВТОПОДБОРА РАСШИРЕНИЙ
     document.addEventListener("DOMContentLoaded", () => {
       const images = document.querySelectorAll('img.auto-fix');
       images.forEach(img => {
         const baseName = img.getAttribute('data-name');
         if (!baseName) return;
-
         const extensions = ['.jpg', '.png', '.gif', '.jpeg', '.jpg.jpg', '.png.png'];
         let attemptIndex = 0;
-
         img.onerror = function() {
           if (attemptIndex < extensions.length) {
             img.src = baseName + extensions[attemptIndex];
             attemptIndex++;
           } else {
-            // Рисуем розовую заглушку
             if (img.closest('.img-wrapper') || img.closest('.polaroid')) {
                img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="100%" height="100%" fill="%23ffe4e1"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="20" fill="%23ff69b4">🐷 Хрю-хрю</text></svg>';
             } else {
@@ -342,7 +321,6 @@
             }
           }
         };
-
         img.src = baseName + extensions[attemptIndex];
         attemptIndex++;
       });
