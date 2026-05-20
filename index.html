@@ -224,7 +224,7 @@
           <div class="badge maybe">СТИЛЬ</div>
           <div class="img-wrapper"><span>Сумка</span></div>
           <h3>Классическая сумка 👜</h3>
-          <p>Она должна быть классическая... Коричневая, черная или светлая. Все.</p>
+          <p>Она должна быть классическая... Коричневая, черная или светлая.</p>
         </div>
 
         <div class="wish-card">
@@ -277,54 +277,4 @@
         </div>
 
         <div class="wish-card">
-          <div class="badge maybe">ВКУСНЯШКА</div>
-          <div class="img-wrapper"><img data-name="bento" class="auto-fix"></div>
-          <h3>Бенто-тортик 🐷</h3>
-          <p>Желаемый вкус: Сникерс! 🍫</p>
-        </div>
-
-        <div class="wish-card">
-          <div class="badge must">ХРЮ!</div>
-          <div class="img-wrapper"><img data-name="plush" class="auto-fix"></div>
-          <h3>Плюшевая свинка 🐽</h3>
-          <p>Она идеальная! Артикул для заказа: 634174058</p>
-        </div>
-
-        <div class="wish-card">
-          <div class="badge maybe">ПО ЖЕЛАНИЮ</div>
-          <div class="img-wrapper"><img data-name="sokolov" class="auto-fix"></div>
-          <h3>Серебро SOKOLOV 💎</h3>
-          <p>Если прям совсем не знаете, что выбрать, вот примеры артикулов:</p>
-          <div class="articles">112056432, 190006037, 2077617, 2077683</div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const images = document.querySelectorAll('img.auto-fix');
-      images.forEach(img => {
-        const baseName = img.getAttribute('data-name');
-        if (!baseName) return;
-        const extensions = ['.jpg', '.png', '.gif', '.jpeg', '.jpg.jpg', '.png.png'];
-        let attemptIndex = 0;
-        img.onerror = function() {
-          if (attemptIndex < extensions.length) {
-            img.src = baseName + extensions[attemptIndex];
-            attemptIndex++;
-          } else {
-            if (img.closest('.img-wrapper') || img.closest('.polaroid')) {
-               img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="100%" height="100%" fill="%23ffe4e1"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="20" fill="%23ff69b4">🐷 Хрю-хрю</text></svg>';
-            } else {
-               img.style.opacity = '0'; 
-            }
-          }
-        };
-        img.src = baseName + extensions[attemptIndex];
-        attemptIndex++;
-      });
-    });
-  </script>
-</body>
-</html>
+          <div class="badge maybe
