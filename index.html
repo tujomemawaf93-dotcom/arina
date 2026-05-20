@@ -27,7 +27,6 @@
     position: relative;
   }
 
-  /* --- СТИКЕРЫ --- */
   .stickers-layer {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     z-index: 1; pointer-events: none; overflow: hidden;
@@ -152,10 +151,12 @@
     <img data-name="giraffe_bday" class="sticker auto-fix anim-1" style="top:135vh; right:2%; width:130px;">
     <img data-name="pig_dots" class="sticker auto-fix anim-3" style="top:150vh; left:8%; width:140px;">
     <img data-name="image_9c76b0" class="sticker auto-fix anim-2" style="top:165vh; right:2%; width:110px;">
+    
     <img data-name="giraffe_heart" class="sticker auto-fix anim-3" style="top:200vh; right:2%; width:130px;">
     <img data-name="image_9c797d" class="sticker auto-fix anim-2" style="top:215vh; left:10%; width:120px;">
     <img data-name="giraffe_funny" class="sticker auto-fix anim-1" style="top:230vh; right:2%; width:120px;">
     <img data-name="image_9c7d99" class="sticker auto-fix anim-3" style="top:245vh; left:4%; width:150px; mix-blend-mode:multiply;">
+    
     <img data-name="hippo_love" class="sticker auto-fix anim-1" style="top:275vh; left:2%; width:120px;">
     <img data-name="pig_scarf" class="sticker auto-fix anim-3" style="top:290vh; right:5%; width:140px;">
     <img data-name="pig_happy" class="sticker auto-fix anim-1" style="top:320vh; right:2%; width:120px;">
@@ -277,4 +278,54 @@
         </div>
 
         <div class="wish-card">
-          <div class="badge maybe
+          <div class="badge maybe">ВКУСНЯШКА</div>
+          <div class="img-wrapper"><img data-name="bento" class="auto-fix"></div>
+          <h3>Бенто-тортик 🐷</h3>
+          <p>Желаемый вкус: Сникерс! 🍫</p>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge must">ХРЮ!</div>
+          <div class="img-wrapper"><img data-name="plush" class="auto-fix"></div>
+          <h3>Плюшевая свинка 🐽</h3>
+          <p>Она идеальная! Артикул для заказа: 634174058</p>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge maybe">ПО ЖЕЛАНИЮ</div>
+          <div class="img-wrapper"><img data-name="sokolov" class="auto-fix"></div>
+          <h3>Серебро SOKOLOV 💎</h3>
+          <p>Если прям совсем не знаете, что выбрать, вот примеры артикулов:</p>
+          <div class="articles">112056432, 190006037, 2077617, 2077683</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const images = document.querySelectorAll('img.auto-fix');
+      images.forEach(img => {
+        const baseName = img.getAttribute('data-name');
+        if (!baseName) return;
+        const extensions = ['.jpg', '.png', '.gif', '.jpeg', '.jpg.jpg', '.png.png'];
+        let attemptIndex = 0;
+        img.onerror = function() {
+          if (attemptIndex < extensions.length) {
+            img.src = baseName + extensions[attemptIndex];
+            attemptIndex++;
+          } else {
+            if (img.closest('.img-wrapper') || img.closest('.polaroid')) {
+               img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="100%" height="100%" fill="%23ffe4e1"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="20" fill="%23ff69b4">🐷 Хрю-хрю</text></svg>';
+            } else {
+               img.style.opacity = '0'; 
+            }
+          }
+        };
+        img.src = baseName + extensions[attemptIndex];
+        attemptIndex++;
+      });
+    });
+  </script>
+</body>
+</html>
