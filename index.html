@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>С Днем Рождения, Арина! 💖</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700;900&family=Nunito:wght@400;700;900&display=swap');
+
+  :root {
+    --bg-pink: #fff0f3;
+    --card-yellow: #fff9c4;
+    --text-dark: #4a3b3e;
+    --accent-pink: #ffb6c1;
+    --must-color: #ff4d6d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-pink);
+    background-image: radial-gradient(var(--accent-pink) 1.5px, transparent 1.5px);
+    background-size: 25px 25px;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* --- СТИКЕРЫ --- */
+  .stickers-layer {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1; pointer-events: none; overflow: hidden;
+  }
+  .sticker {
+    position: absolute; filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.15));
+    transition: transform 0.3s; object-fit: contain;
+  }
+  @keyframes float1 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(4deg); } }
+  @keyframes float2 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(15px) rotate(-4deg); } }
+  .anim-1 { animation: float1 4s ease-in-out infinite; }
+  .anim-2 { animation: float2 5s ease-in-out infinite; }
+  .anim-3 { animation: float1 6s ease-in-out infinite reverse; }
+
+  /* --- КОНТЕНТ --- */
+  .content-layer {
+    position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; width: 100%;
+  }
+
+  section {
+    width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; padding: 60px 20px;
+  }
+
+  /* --- БУКВЫ --- */
+  .balloon-container { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-bottom: 50px; }
+  .word { display: flex; justify-content: center; align-items: center; gap: 2px; }
+  .letter {
+    width: clamp(35px, 6vw, 80px); height: clamp(45px, 8.5vw, 110px);
+    object-fit: contain; mix-blend-mode: multiply; filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.15));
+    animation: bounce 3s infinite alternate ease-in-out;
+  }
+  .num-balloon {
+    width: clamp(50px, 9vw, 120px); height: clamp(65px, 12vw, 160px);
+    object-fit: contain; mix-blend-mode: screen; filter: drop-shadow(0px 8px 15px rgba(255, 105, 180, 0.4)); 
+    animation: bounce 4s infinite alternate ease-in-out reverse;
+  }
+  @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+
+  /* --- ТРИ ФОТКИ АРИНЫ --- */
+  .photos-row { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 30px; margin-bottom: 60px; width: 100%; }
+  .polaroid {
+    background: #fff; padding: 15px 15px 50px 15px; border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 1px solid #e0e0e0;
+    width: 250px; position: relative;
+  }
+  .polaroid img { width: 100%; height: 260px; object-fit: cover; border-radius: 4px; background: #ffe4e1; }
+  .polaroid::after {
+    position: absolute; bottom: 15px; left: 0; width: 100%; text-align: center; font-family: 'Comfortaa', cursive;
+    font-size: 20px; font-weight: 900; color: var(--accent-pink);
+  }
+  .pol-1 { transform: rotate(-6deg); } .pol-1::after { content: "ARINA"; }
+  .pol-2 { transform: scale(1.05) translateY(-10px); z-index: 5; box-shadow: 0 20px 40px rgba(0,0,0,0.2);} .pol-2::after { content: "MY DAY"; }
+  .pol-3 { transform: rotate(6deg); } .pol-3::after { content: "16 Y.O."; }
+
+  /* --- ПРАВИЛА --- */
+  .rules-board {
+    background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+    padding: 30px; border-radius: 25px; max-width: 700px; width: 100%;
+    border: 3px dashed var(--accent-pink); box-shadow: 10px 10px 0px var(--card-yellow); margin-bottom: 60px;
+    position: relative; z-index: 20; 
+  }
+  .rules-board h3 { font-family: 'Comfortaa', cursive; font-size: 28px; margin-bottom: 20px; text-align: center; color: var(--must-color); }
+  .rules-list { list-style: none; display: flex; flex-direction: column; gap: 15px; }
+  .rules-list li { font-size: 18px; font-weight: 800; display: flex; gap: 15px; align-items: center; line-height: 1.4; }
+  .rules-list span { font-size: 28px; flex-shrink: 0; }
+
+  /* --- ЗАГОЛОВОК ВИШЛИСТА --- */
+  .wishlist-title { width: 100%; max-width: 450px; margin-bottom: 50px; filter: drop-shadow(0px 10px 15px rgba(255,182,193,0.6)); animation: bounce 3s infinite alternate ease-in-out; position: relative; z-index: 20;}
+
+  /* --- СЕТКА ВИШЛИСТА --- */
+  .wish-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; width: 100%; position: relative; z-index: 20; }
+
+  .wish-card {
+    background: white; border-radius: 25px; padding: 25px; text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08); border: 2px solid #fff;
+    transition: transform 0.3s; position: relative; display: flex; flex-direction: column;
+  }
+  .wish-card:hover { transform: translateY(-8px); border-color: var(--card-yellow); }
+  
+  .wish-card .img-wrapper { 
+    width: 100%; aspect-ratio: 1; border-radius: 15px; overflow: hidden; margin-bottom: 15px; 
+    background: #ffe4e1;
+  }
+  .wish-card img, .wish-card video { width: 100%; height: 100%; object-fit: cover; }
+  .wish-card h3 { font-family: 'Comfortaa', cursive; font-size: 22px; margin-bottom: 10px; color: var(--text-dark); }
+  .wish-card p { font-size: 15px; font-weight: 700; color: #666; line-height: 1.5; margin-bottom: 15px; flex-grow: 1; }
+  .wish-card .articles { font-family: monospace; background: var(--bg-pink); padding: 10px; border-radius: 10px; font-size: 14px; font-weight: 900; color: var(--must-color); }
+  
+  /* Акцент на Альбом */
+  .album-highlight { grid-column: 1 / -1; max-width: 650px; margin: 0 auto; border: 5px solid var(--must-color); box-shadow: 0 0 40px rgba(255, 77, 109, 0.4); transform: scale(1.02); }
+  .badge { position: absolute; top: -15px; right: -15px; padding: 8px 18px; border-radius: 20px; font-weight: 900; font-size: 14px; box-shadow: 3px 5px 10px rgba(0,0,0,0.2); z-index: 10; }
+  .badge.must { background: var(--must-color); color: white; }
+  .badge.maybe { background: var(--card-yellow); color: var(--text-dark); }
+  .badge.wow { background: #b088f9; color: white; }
+
+  /* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ 📱 */
+  @media (max-width: 768px) {
+    .sticker { opacity: 0.15 !important; transform: scale(0.7); z-index: 0;}
+    
+    section { padding: 30px 15px; }
+    .rules-board { padding: 20px; border-radius: 15px; margin-bottom: 40px;}
+    .rules-board h3 { font-size: 22px; }
+    .rules-list li { font-size: 14px; gap: 10px;}
+    .rules-list span { font-size: 22px; }
+    .wishlist-title { max-width: 250px; margin-bottom: 30px;}
+    
+    .photos-row { gap: 15px; margin-bottom: 40px; }
+    .polaroid { width: 140px; padding: 10px 10px 35px 10px; }
+    .polaroid img { height: 150px; }
+    .polaroid::after { font-size: 14px; bottom: 10px; }
+    .pol-2 { transform: scale(1.05) translateY(-5px); }
+  }
+</style>
+</head>
+<body>
+
+  <div class="stickers-layer">
+    <img data-name="image_9c7d99" class="sticker auto-fix anim-1" style="top:2%; left:2%; width:160px; mix-blend-mode:multiply;">
+    <img data-name="pig_scarf" class="sticker auto-fix anim-2" style="top:8%; right:2%; width:120px;">
+    <img data-name="hippo_love" class="sticker auto-fix anim-3" style="top:20%; left:8%; width:130px;">
+    <img data-name="giraffe_baby" class="sticker auto-fix anim-1" style="top:25%; right:2%; width:120px;">
+    <img data-name="pig_happy" class="sticker auto-fix anim-2" style="top:40%; left:6%; width:140px;">
+    <img data-name="pig_party" class="sticker auto-fix anim-1" style="top:50%; right:2%; width:130px;">
+    <img data-name="image_9c7678" class="sticker auto-fix anim-3" style="top:60%; left:12%; width:120px;">
+    
+    <img data-name="hippo_sweet" class="sticker auto-fix anim-1" style="top:90vh; left:2%; width:120px;">
+    <img data-name="hippo_fun" class="sticker auto-fix anim-3" style="top:105vh; right:10%; width:150px;">
+    <img data-name="image_9c799c" class="sticker auto-fix anim-2" style="top:120vh; left:2%; width:110px;">
+    <img data-name="giraffe_bday" class="sticker auto-fix anim-1" style="top:135vh; right:2%; width:130px;">
+    <img data-name="pig_dots" class="sticker auto-fix anim-3" style="top:150vh; left:8%; width:140px;">
+    <img data-name="image_9c76b0" class="sticker auto-fix anim-2" style="top:165vh; right:2%; width:110px;">
+    
+    <img data-name="giraffe_heart" class="sticker auto-fix anim-3" style="top:200vh; right:2%; width:130px;">
+    <img data-name="image_9c797d" class="sticker auto-fix anim-2" style="top:215vh; left:10%; width:120px;">
+    <img data-name="giraffe_funny" class="sticker auto-fix anim-1" style="top:230vh; right:2%; width:120px;">
+    <img data-name="image_9c7d99" class="sticker auto-fix anim-3" style="top:245vh; left:4%; width:150px; mix-blend-mode:multiply;">
+    
+    <img data-name="hippo_love" class="sticker auto-fix anim-1" style="top:275vh; left:2%; width:120px;">
+    <img data-name="pig_scarf" class="sticker auto-fix anim-3" style="top:290vh; right:5%; width:140px;">
+    <img data-name="pig_happy" class="sticker auto-fix anim-1" style="top:320vh; right:2%; width:120px;">
+    <img data-name="image_9c79bf" class="sticker auto-fix anim-3" style="top:335vh; left:2%; width:110px;">
+    <img data-name="giraffe_bday" class="sticker auto-fix anim-1" style="top:365vh; left:10%; width:160px;">
+    <img data-name="pig_dots" class="sticker auto-fix anim-3" style="top:380vh; right:2%; width:120px;">
+    <img data-name="giraffe_heart" class="sticker auto-fix anim-1" style="top:410vh; right:10%; width:150px;">
+    
+    <img data-name="hippo_sweet" class="sticker auto-fix anim-2" style="top:440vh; left:5%; width:130px;">
+    <img data-name="pig_party" class="sticker auto-fix anim-1" style="top:470vh; right:8%; width:140px;">
+  </div>
+
+  <div class="content-layer">
+    <section>
+      <div class="balloon-container">
+        <div class="word">
+          <img data-name="image_9c6e96" class="letter auto-fix"><img data-name="image_9c6e5d" class="letter auto-fix"><img data-name="image_9c6b90" class="letter auto-fix"><img data-name="image_9c6b90" class="letter auto-fix"><img data-name="image_9c6b70" class="letter auto-fix">
+        </div>
+        <div class="word">
+          <img data-name="balloon_1" class="num-balloon auto-fix"><img data-name="balloon_6" class="num-balloon auto-fix">
+        </div>
+        <div class="word">
+          <img data-name="image_9c6b50" class="letter auto-fix"><img data-name="image_9c6b17" class="letter auto-fix"><img data-name="image_9c6af9" class="letter auto-fix"><img data-name="image_9c6ad5" class="letter auto-fix"><img data-name="image_9c6e96" class="letter auto-fix"><img data-name="image_9c6a96" class="letter auto-fix"><img data-name="image_9c6e5d" class="letter auto-fix"><img data-name="image_9c6b70" class="letter auto-fix">
+        </div>
+      </div>
+      
+      <div class="photos-row">
+        <div class="polaroid pol-1"><img data-name="5463291133610890076" class="auto-fix"></div>
+        <div class="polaroid pol-2"><img data-name="5463291133610890047" class="auto-fix"></div>
+        <div class="polaroid pol-3"><img data-name="5463291133610890083" class="auto-fix"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="rules-board">
+        <h3>⚠️ Правила моего дня рождения ⚠️</h3>
+        <ul class="rules-list">
+          <li><span>🕛</span> Жду ваших поздравлений ровно в 0:00!</li>
+          <li><span>💐</span> Обязательно: любой цветок/букетик, с которым я у вас ассоциируюсь.</li>
+          <li><span>🚫</span> СЛАДКОЕ НЕ ДАРИТЬ! (исключение — бенто-тортик)</li>
+        </ul>
+      </div>
+
+      <img data-name="-05-05-2026" class="wishlist-title auto-fix">
+      
+      <div class="wish-grid">
+        
+        <div class="wish-card album-highlight">
+          <div class="badge must">100% НАДО</div>
+          <div class="img-wrapper">
+            <video src="video.mp4" autoplay loop muted playsinline></video>
+          </div>
+          <h3>Памятный альбом ✨</h3>
+          <p>Это самый обязательный и главный подарок, который я очень жду! Каждый из вас делает памятную страничку для меня (как на видео).</p>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge must">ЭМОЦИИ</div>
+          <div class="img-wrapper"><video src="oYjB6CDFFBdI80zbdRbBAB9Ee7zIEUQfgn8Z9E.mp4" autoplay loop muted playsinline class="auto-fix"></video></div>
+          <h3>Видеопоздравления 📹</h3>
+          <p>Запишите мне крутое, смешное или милое видео! Буду пересматривать и плакать от счастья.</p>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge must">ПРИЯТНОСТИ</div>
+          <div class="img-wrapper"><img data-name="tg_greet" class="auto-fix"></div>
+          <h3>Поздравление в ТГ 💌</h3>
+          <p>Напишите мне теплые слова и душевное поздравление. Буду безумно рада прочитать каждое сообщение и сохранить его на память! 🥰</p>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge maybe">СТИЛЬ</div>
+          <div class="img-wrapper"><img data-name="bag" class="auto-fix"></div>
+          <h3>Классическая сумка 👜</h3>
+          <p>Базовых цветов (черная или коричневая, светлую скорее не хочу). Главное — классика!</p>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge wow">ПОДАРКИ 30+</div>
+          <div class="img-wrapper"><img data-name="bed" class="auto-fix"></div>
+          <h3>Постельное белье 🛏️</h3>
+          <p>Размер строго 160 на 200. Для самых сладких и уютных снов.</p>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge wow">ПОДАРКИ 30+</div>
+          <div class="img-wrapper"><img data-name="camera" class="auto-fix"></div>
+          <h3>Фотик 📸</h3>
+          <p>Чтобы запечатлеть лучшие моменты и крутую эстетику.</p>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge wow">ПОДАРКИ 30+</div>
+          <div class="img-wrapper"><img data-name="hairdryer" class="auto-fix"></div>
+          <h3>Фен 💨</h3>
+          <p>Для идеальных, красивых и быстрых укладок.</p>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge maybe">БУРАТИНО?</div>
+          <div class="img-wrapper"><img data-name="5461039333797206184" class="auto-fix"></div>
+          <h3>Повербанк Apple 🔋</h3>
+          <p>Оригинальный MagSafe. А вдруг среди вас найдется реально богатый Буратино? 😉</p>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge maybe">КРАСОТА И РЕЛАКС</div>
+          <div class="img-wrapper"><img data-name="сертификат" class="auto-fix"></div>
+          <h3>Сертификаты 🎟️</h3>
+          <p>С удовольствием схожу на массаж, в магазин нижнего белья, в Золотое Яблоко 🍏 или на йогу с песиками 🐶 (говорят, у нас такое точно есть!).</p>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge maybe">НА МЕЧТУ</div>
+          <div class="img-wrapper"><img data-name="2aa3629f31eba06ab3e4c442acd63c97" class="auto-fix"></div>
+          <h3>Денюжка 💸</h3>
+          <p>Всегда актуальный подарок, коплю на свои грандиозные планы.</p>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge must">ОТ ДУШИ</div>
+          <div class="img-wrapper"></div>
+          <h3>Подарки своими руками 🎨</h3>
+          <p>Подарки ручной работы и любые сюрпризы «от себя» очень приветствуются! Буду рада вашему творчеству.</p>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge maybe">ВКУСНЯШКА</div>
+          <div class="img-wrapper"><img data-name="bento" class="auto-fix"></div>
+          <h3>Бенто-тортик 🐷</h3>
+          <p>Желаемый вкус: Сникерс! 🍫</p>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge must">ХРЮ!</div>
+          <div class="img-wrapper"><img data-name="plush" class="auto-fix"></div>
+          <h3>Плюшевая свинка 🐽</h3>
+          <p>Она идеальная! Артикул для заказа:</p>
+          <div class="articles">634174058</div>
+        </div>
+
+        <div class="wish-card">
+          <div class="badge maybe">ПО ЖЕЛАНИЮ</div>
+          <div class="img-wrapper"><img data-name="sokolov" class="auto-fix"></div>
+          <h3>Серебро SOKOLOV 💎</h3>
+          <p>По желанию, кто что захочет. Если прям совсем не знаете, что выбрать, то вот примеры артикулов:</p>
+          <div class="articles">112056432, 190006037, 2077617, 2077683</div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // СКРИПТ АВТОПОДБОРА РАСШИРЕНИЙ
+    document.addEventListener("DOMContentLoaded", () => {
+      const images = document.querySelectorAll('img.auto-fix');
+      images.forEach(img => {
+        const baseName = img.getAttribute('data-name');
+        if (!baseName) return;
+
+        const extensions = ['.jpg', '.png', '.gif', '.jpeg', '.jpg.jpg', '.png.png'];
+        let attemptIndex = 0;
+
+        img.onerror = function() {
+          if (attemptIndex < extensions.length) {
+            img.src = baseName + extensions[attemptIndex];
+            attemptIndex++;
+          } else {
+            // Рисуем розовую заглушку
+            if (img.closest('.img-wrapper') || img.closest('.polaroid')) {
+               img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="100%" height="100%" fill="%23ffe4e1"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="20" fill="%23ff69b4">🐷 Хрю-хрю</text></svg>';
+            } else {
+               img.style.opacity = '0'; 
+            }
+          }
+        };
+
+        img.src = baseName + extensions[attemptIndex];
+        attemptIndex++;
+      });
+    });
+  </script>
+</body>
+</html>
